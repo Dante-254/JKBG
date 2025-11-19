@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Phone } from "lucide-react";
-import heroImage from "@/assets/hero-construction.jpg";
+import heroImage from "@/assets/WhatsApp Image 2025-11-07 at 19.30.44 (1).webp";
 
 const Hero = () => {
   return (
