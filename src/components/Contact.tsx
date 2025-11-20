@@ -22,7 +22,7 @@ const Contact = () => {
     {
       icon: <MapPin className="h-6 w-6" />,
       title: "Location",
-      details: ["Nairobi, Kenya", "Serving nationwide"]
+      details: ["Malaa, Kangundo Road", "Serving nationwide"]
     },
     {
       icon: <Clock className="h-6 w-6" />,

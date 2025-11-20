@@ -49,7 +49,7 @@ const Footer = () => {
               </a>
               <div className="flex items-center gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                Nairobi, Kenya
+                Malaa, Kangundo Road
               </div>
             </div>
           </div>

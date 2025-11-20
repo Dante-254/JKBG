@@ -22,7 +22,7 @@ const CompanyInfo = () => {
           </div>
           <div className="text-center mt-4">
             <p className="text-muted-foreground">
-              📍 Nairobi, Kenya | Serving construction and property management needs across the region
+              📍 Malaa, Kangundo road | Serving construction and property management needs across the region
             </p>
           </div>
         </div>
