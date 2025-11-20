@@ -29,41 +29,23 @@ const CurrentSite = () => {
           {images.map((src, i) => (
             <Card
               key={i}
-              className="bg-card/50 backdrop-blur border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg"
+              className="bg-card/50 backdrop-blur border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg group"
             >
               <CardContent className="p-0">
                 <Link
                   to="/gallery"
-                  className="block w-full h-56 overflow-hidden rounded-t"
+                  className="block w-full h-56 overflow-hidden rounded-t focus:outline-none"
                 >
                   <img
                     src={src}
                     alt={`Site ${i + 1}`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transform transition-transform duration-300 ease-out group-hover:scale-105"
                     loading="lazy"
                   />
                 </Link>
               </CardContent>
             </Card>
           ))}
-          <Card
-            key={i}
-            className="bg-card/50 backdrop-blur border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg group"
-          >
-            <CardContent className="p-0">
-              <Link
-                to="/gallery"
-                className="block w-full h-56 overflow-hidden rounded-t focus:outline-none"
-              >
-                <img
-                  src={src}
-                  alt={`Site ${i + 1}`}
-                  className="w-full h-full object-cover transform transition-transform duration-300 ease-out group-hover:scale-105"
-                  loading="lazy"
-                />
-              </Link>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>
