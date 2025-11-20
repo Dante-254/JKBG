@@ -60,27 +60,6 @@ const CompanyInfo = () => {
           </Card>
         </div>
 
-        {/* Our Team */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8">Our Team</h2>
-          <div className="flex justify-center">
-            <Card className="max-w-md">
-              <CardContent className="p-8 text-center">
-                <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto mb-4">
-                  <span className="text-2xl font-bold">DM</span>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">David Muthui</h3>
-                <Badge variant="secondary" className="mb-3">
-                  🎨 Developer GI JOE
-                </Badge>
-                <p className="text-muted-foreground">
-                  Lead designer responsible for creating innovative and functional design solutions for all our construction projects.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-
         {/* Website Gallery */}
         <div>
           <h2 className="text-3xl font-bold text-center mb-8">Our Work Gallery</h2>
