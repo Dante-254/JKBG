@@ -10,7 +10,7 @@ const CompanyInfo = () => {
           <h2 className="text-3xl font-bold text-center mb-8">Our Location</h2>
           <div className="w-full h-96 rounded-lg overflow-hidden shadow-lg">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255281.19052830194!2d36.68731097832031!3d-1.3031934000000053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1632391234567!5m2!1sen!2sus"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7977.638450110695!2d37.14054403437812!3d-1.282252600656322!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f650029ab0ae5%3A0x6c030c67b65c95e!2sJKBG%20Construction%20company%20ltd!5e0!3m2!1sen!2ske!4v1763630707354!5m2!1sen!2ske"
               width="100%"
               height="100%"
               style={{ border: 0 }}
