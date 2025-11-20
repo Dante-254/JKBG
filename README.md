@@ -4,70 +4,133 @@
 
 **URL**: https://lovable.dev/projects/7f60fdcc-fcef-44bd-8610-e0b858c8809d
 
-## How can I edit this code?
+# JKBG Construction — Website
 
-There are several ways of editing your application.
+This repository is a Vite + React + TypeScript marketing website for JKBG Construction. It uses Tailwind CSS and shadcn-ui primitives for layout and components. The site includes a home page with a `CurrentSite` section and a dedicated `Gallery` page powered by images stored under the `public/` folder.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7f60fdcc-fcef-44bd-8610-e0b858c8809d) and start prompting.
+## Quick start
 
-Changes made via Lovable will be committed automatically to this repo.
+- Install dependencies:
 
-**Use your preferred IDE**
+```bash
+npm install
+```
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Run the development server:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+- Build for production:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+npm run build
+```
 
-**Use GitHub Codespaces**
+- Preview the production build locally:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+npm run preview
+```
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## Project structure (important paths)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- `src/` — application source code
+  - `src/pages/Index.tsx` — Home page (renders `Hero`, `CompanyInfo`, `CurrentSite`, `About`, `Services`, `Contact`)
+  - `src/pages/Gallery.tsx` — Gallery page (masonry-like grid + lightbox)
+  - `src/components/CurrentSite.tsx` — Component that displays `public/current_site` images on the home page
+  - `src/components/Header.tsx` — Site header / navigation (contains `Home`, `Gallery`, `About`, etc.)
+  - `src/components/Footer.tsx` — Site footer
+  - `src/components/ui/` — UI primitives (Dialog, Card, Badge, Toaster, etc.)
+- `public/current_site/` — images shown on the home page `CurrentSite` section
+- `public/gallery/` — the full gallery images (displayed on `/gallery`)
+- `public/_image-manifest.json` — generated manifest containing arrays of image URLs
+- `scripts/generate-image-manifest.mjs` — Node script to create/update the image manifest
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/7f60fdcc-fcef-44bd-8610-e0b858c8809d) and click on Share -> Publish.
+## Image workflow (how to add client images)
 
-## Can I connect a custom domain to my Lovable project?
+Recommended locations for images the client will add:
 
-Yes, you can!
+- For images that the client will upload/update frequently (no rebuild): put files in `public/current_site/` for images that appear on the home page, or `public/gallery/` for the full gallery.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+Add images (example):
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+```bash
+# copy client's files into the public folders
+mkdir -p public/current_site public/gallery
+cp /path/to/client_images/* public/gallery/
+```
+
+After adding or removing images, regenerate the manifest so the site can read the new image list at runtime:
+
+```bash
+node ./scripts/generate-image-manifest.mjs
+```
+
+This writes `public/_image-manifest.json` with two arrays: `current_site` and `gallery`. The app fetches this manifest at runtime so adding/removing images does not require rebuilding the site — only regenerating the manifest.
+
+---
+
+## Gallery behavior and UI notes
+
+- The gallery page (`/gallery`) uses a CSS column layout for a masonry-like appearance and provides varied thumbnail heights for visual interest.
+- Thumbnails use `loading="lazy"` to improve performance.
+- Clicking a thumbnail opens a lightbox (implemented with the existing `Dialog` UI component). The lightbox supports prev/next controls, keyboard navigation (←, →, Esc), and a responsive image view (max height ~80vh).
+- Images in the `CurrentSite` section on the home page link to the `/gallery` page so users can see full project galleries.
+
+---
+
+## Routing
+
+- Home page: `/` (renders `Index.tsx`)
+- Gallery page: `/gallery` (renders `Gallery.tsx`)
+- Header navigation includes `Home`, `Gallery`, `About`, `Services`, and `Contact`. The site uses `react-router`'s `<Link>` for client-side navigation.
+
+---
+
+## Useful developer commands
+
+- Install dependencies
+  - `npm install`
+- Development server
+  - `npm run dev`
+- Build
+  - `npm run build`
+- Preview production build
+  - `npm run preview`
+- Regenerate image manifest
+  - `node ./scripts/generate-image-manifest.mjs`
+
+---
+
+## Accessibility & performance suggestions
+
+- Add `alt` and optional captions metadata to images in the manifest for better accessibility and lightbox captions.
+- Generate responsive image variants and WebP conversions during a build step to serve optimized sizes with `srcset`.
+- Add server-side pagination or lazy-loading on the gallery page if dozens or hundreds of images are expected.
+
+---
+
+## Deployment
+
+This project is a static site built by Vite. Deploy the `dist/` output from `npm run build` to any static host (Netlify, Vercel, Cloudflare Pages, or S3 + CloudFront).
+
+If you deploy to a platform that exposes the `public/` folder (e.g., copy `public/` contents alongside `dist/`), keep the `public/_image-manifest.json` updated when image files change.
+
+---
+
+## Next steps I can help with
+
+- Add smooth scroll handling for in-page anchors (so links like `/#about` animate to the section).
+- Add active nav highlighting to indicate the current page.
+- Generate `alt`/caption metadata for images by extending the manifest format and updating the generator script.
+- Add an admin UI or simple upload script to let non-developers upload images and regenerate the manifest automatically.
+
+If you want any of those, tell me which and I will implement it.
