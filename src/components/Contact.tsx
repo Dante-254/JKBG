@@ -16,8 +16,8 @@ const Contact = () => {
     {
       icon: <Mail className="h-6 w-6" />,
       title: "Email", 
-      details: ["jkbgconstruction@gmail.com"],
-      action: "mailto:jkbgconstruction@gmail.com"
+      details: ["jkbgconstruction21@gmail.com"],
+      action: "mailto:jkbgconstruction21@gmail.com"
     },
     {
       icon: <MapPin className="h-6 w-6" />,
@@ -97,7 +97,7 @@ const Contact = () => {
                   </a>
                 </Button>
                 <Button variant="professional" size="lg" className="flex-1" asChild>
-                  <a href="mailto:jkbgconstruction@gmail.com">
+                  <a href="mailto:jkbgconstruction21@gmail.com">
                     <Mail className="h-5 w-5" />
                     Send Email
                   </a>

@@ -47,11 +47,11 @@ const Header = () => {
               +254720836939
             </a>
             <a
-              href="mailto:jkbgconstruction@gmail.com"
+              href="mailto:jkbgconstruction21@gmail.com"
               className="flex items-center gap-2 hover:text-primary transition-colors"
             >
               <Mail className="h-4 w-4" />
-              jkbgconstruction@gmail.com
+              jkbgconstruction21@gmail.com
             </a>
           </div>
         </div>
